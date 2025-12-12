@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高世雷&潘宝艳 新婚快乐！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wedding: {
+                            pink: '#F8BBD0',
+                            red: '#E91E63',
+                            gold: '#FFD700',
+                            cream: '#FFF8E1',
+                            overlay: 'rgba(255, 248, 225, 0.85)'
+                        }
+                    },
+                    fontFamily: {
+                        wedding: ['Arial', 'Microsoft YaHei', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            }
+            .text-shadow-sm {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            }
+            .heart-beat {
+                animation: heartbeat 1.5s ease-in-out infinite;
+            }
+            .float-up {
+                animation: floatUp 3s ease-in-out infinite;
+            }
+            .confetti {
+                animation: confetti 5s ease-in-out infinite;
+            }
+            .grid-photo {
+                transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            }
+            .grid-photo:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-wedding-cream font-wedding overflow-x-hidden antialiased">
+    <!-- 彩带动画 -->
+    <div id="confetti-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+
+    <!-- 九宫格背景（半透明）- 优化定位和比例 -->
+    <div class="fixed inset-0 w-full h-full z-0 opacity-25 p-6 md:p-8">
+        <div class="grid grid-cols-3 grid-rows-3 gap-3 h-full w-full max-w-4xl mx-auto">
+            <img src="" alt="婚纱照1" class="w-full h-full object-cover rounded-lg grid-photo" id="grid1">
+            <img src="" alt="婚纱照2" class="w-full h-full object-cover rounded-lg grid-photo" id="grid2">
+            <img src="" alt="婚纱照3" class="w-full h-full object-cover rounded-lg grid-photo" id="grid3">
+            <img src="" alt="婚纱照4" class="w-full h-full object-cover rounded-lg grid-photo" id="grid4">
+            <img src="" alt="婚纱照5" class="w-full h-full object-cover rounded-lg grid-photo" id="grid5">
+            <img src="" alt="婚纱照6" class="w-full h-full object-cover rounded-lg grid-photo" id="grid6">
+            <img src="" alt="婚纱照7" class="w-full h-full object-cover rounded-lg grid-photo" id="grid7">
+            <img src="" alt="婚纱照8" class="w-full h-full object-cover rounded-lg grid-photo" id="grid8">
+            <img src="" alt="婚纱照9" class="w-full h-full object-cover rounded-lg grid-photo" id="grid9">
+        </div>
+    </div>
+
+    <!-- 主内容（居中）- 优化间距和层次 -->
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 md:p-6">
+        <!-- 爱心图标 - 优化大小和间距 -->
+        <div class="mb-4 md:mb-6 heart-beat">
+            <i class="fa fa-heart text-wedding-red text-5xl md:text-7xl lg:text-8xl"></i>
+        </div>
+
+        <!-- 主标题 - 优化字体层级和间距 -->
+        <h1 class="text-[clamp(1.5rem,4vw,2.8rem)] font-bold text-white text-center text-shadow mb-1 float-up">
+            高世雷 & 潘宝艳
+        </h1>
+        <h2 class="text-[clamp(1.8rem,5vw,3.2rem)] font-bold text-white text-center text-shadow mb-6 md:mb-8 float-up">
+            新婚快乐！
+        </h2>
+
+        <!-- 婚纱照轮播（当前显示）- 优化圆角和阴影 -->
+        <div class="relative w-full max-w-md md:max-w-lg h-[320px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl mb-8 md:mb-10">
+            <img src="" alt="高世雷&潘宝艳婚纱照" class="absolute inset-0 w-full h-full object-cover" id="mainPhoto">
+            <!-- 轮播遮罩 - 增加层次感 -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- 装饰线 - 优化样式 -->
+        <div class="flex items-center justify-center w-full max-w-md md:max-w-lg mb-6 md:mb-8">
+            <div class="h-px bg-white/60 flex-1"></div>
+            <div class="mx-4 text-wedding-gold text-lg">
+                <i class="fa fa-diamond"></i>
+            </div>
+            <div class="h-px bg-white/60 flex-1"></div>
+        </div>
+
+        <!-- 祝福语卡片 - 优化内边距和阴影 -->
+        <div class="bg-white/95 rounded-xl shadow-lg p-6 md:p-8 max-w-md md:max-w-lg w-full transform transition-all hover:scale-105 hover:shadow-xl mb-8 md:mb-10">
+            <p class="text-gray-700 leading-relaxed text-center text-base md:text-lg">
+                恭喜高世雷和潘宝艳步入婚姻的殿堂！<br>
+                从相识到相知，从相知到相爱，缘分让你们走到一起。<br>
+                愿你们的爱情如璀璨的星辰，永远闪耀；<br>
+                愿你们的生活如甜蜜的蜜糖，幸福美满！
+            </p>
+        </div>
+
+        <!-- 底部祝福 - 优化样式 -->
+        <div class="text-white text-lg md:text-xl font-semibold text-shadow-sm text-center">
+            愿你们永远幸福快乐 ❤️
+        </div>
+    </div>
+
+    <script>
+        // 9张婚纱照的在线链接
+        const photoUrls = [
+            "https://youke2.picui.cn/s1/2025/12/12/693be0963370d.jpg", // 第1张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0962460a.jpg", // 第2张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0962c305.jpg", // 第3张
+            "https://youke2.picui.cn/s1/2025/12/12/693be09625c04.jpg", // 第4张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0a7eebf2.jpg", // 第5张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0a82355c.jpg", // 第6张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0a97927e.jpg", // 第7张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0a9beafe.jpg", // 第8张
+            "https://youke2.picui.cn/s1/2025/12/12/693be0955e507.jpg"  // 第9张
+        ];
+
+        // 初始化九宫格背景
+        const gridImgs = document.querySelectorAll('.grid-photo');
+        gridImgs.forEach((img, index) => {
+            img.src = photoUrls[index];
+            // 初始透明度统一
+            img.style.opacity = 0.3;
+        });
+
+        // 初始化主轮播图
+        const mainPhoto = document.getElementById('mainPhoto');
+        let currentIndex = 0;
+        mainPhoto.src = photoUrls[currentIndex];
+        // 初始高亮当前轮播图对应的九宫格
+        gridImgs[currentIndex].style.opacity = 1;
+
+        // 自动切换主轮播图+九宫格背景高亮
+        setInterval(() => {
+            // 上一张透明度还原
+            gridImgs[currentIndex].style.opacity = 0.3;
+            // 切换索引
+            currentIndex = (currentIndex + 1) % photoUrls.length;
+            mainPhoto.src = photoUrls[currentIndex];
+            // 当前张高亮
+            gridImgs[currentIndex].style.opacity = 1;
+        }, 3500);
+
+        // 生成彩色纸屑 - 优化性能
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#E91E63', '#FF9800', '#FFD700', '#4CAF50', '#2196F3', '#9C27B0'];
+            const confettiCount = 3; // 减少同时生成的数量，提升性能
+
+            setInterval(() => {
+                for (let i = 0; i < confettiCount; i++) {
+                    const confetti = document.createElement('div');
+                    const size = Math.random() * 8 + 4;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.backgroundColor = color;
+                    confetti.style.position = 'absolute';
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.top = '-20px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animation = `confetti ${Math.random() * 2 + 3}s ease-in-out forwards`;
+                    confetti.style.opacity = Math.random() * 0.6 + 0.3;
+
+                    container.appendChild(confetti);
+
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }
+            }, 200);
+        }
+
+        // 点击/触摸生成爱心 - 修复标签错误
+        window.addEventListener('load', () => {
+            createConfetti();
+
+            document.addEventListener('touchstart', (e) => {
+                createHeart(e.touches[0].clientX, e.touches[0].clientY);
+            });
+
+            document.addEventListener('click', (e) => {
+                createHeart(e.clientX, e.clientY);
+            });
+        });
+
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '<i class="fa fa-heart text-wedding-red"></i>'; // 修复标签错误
+            heart.style.position = 'absolute';
+            heart.style.left = `${x - 15}px`;
+            heart.style.top = `${y - 15}px`;
+            heart.style.fontSize = '30px';
+            heart.style.opacity = '1';
+            heart.style.transition = 'all 1s ease-out';
+            heart.style.zIndex = '100';
+            heart.style.pointerEvents = 'none'; // 防止遮挡点击
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = 'translateY(-50px) scale(1.2)';
+                heart.style.opacity = '0';
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }, 10);
+        }
+    </script>
+</body>
+</html>
